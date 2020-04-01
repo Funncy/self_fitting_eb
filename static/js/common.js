@@ -1,11 +1,6 @@
 $(function () {
-    $('.goPage1').on('click', function () {
-        $('.page2').hide();
-        $('.page1').show();
-    });
 
     $('.goPage2').on('click', function () {
-        $('.page1').hide();
         $('.page3').hide();
         $('.page2').show();
     });
