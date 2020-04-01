@@ -1,0 +1,454 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Welcome TodoWorks</title>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/common.js' %}"></script>
+
+        <style media="screen">
+            body {
+                background: #ECEFF1;
+                color: rgba(0, 0, 0, 0.87);
+                font-family: Roboto, Helvetica, Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            #message {
+                background: white;
+                max-width: 800px;
+                margin: 100px auto 16px;
+                padding: 32px 24px;
+                border-radius: 3px;
+            }
+
+            #message h2 {
+                color: #ffa100;
+                font-weight: bold;
+                font-size: 28px;
+                margin: 0 0 8px;
+            }
+
+            #message h1 {
+                font-size: 22px;
+                font-weight: 300;
+                color: rgba(0, 0, 0, 0.6);
+                margin: 0 0 16px;
+            }
+
+            #message p {
+                line-height: 140%;
+                margin: 16px 0 24px;
+                font-size: 16px;
+            }
+
+            #message .buttonBox a {
+                display: block;
+                text-align: center;
+                background: #039be5;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: white;
+                padding: 16px;
+                border-radius: 4px;
+            }
+
+            #message,
+            #message .buttonBox a {
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            }
+
+            select {
+                /* 원하는 너비설정 */
+                padding: 5px;
+                margin-right: 10px;
+                /* 여백으로 높이 설정 */
+                font-family: inherit;
+                /* 폰트 상속 */
+                border: 1px solid #999;
+                border-radius: 0px;
+                /* iOS 둥근모서리 제거 */
+                -webkit-appearance: none;
+                /* 네이티브 외형 감추기 */
+                -moz-appearance: none;
+                appearance: none;
+
+            }
+
+            .buttonArea {
+                overflow: hidden;
+                margin-top: 20px;
+            }
+
+            .buttonArea .buttonBox {
+                float: left;
+            }
+
+            .inputbox {
+                overflow: hidden;
+            }
+
+            .inputbox .div_fl {
+                float: left;
+                padding: 5px;
+            }
+
+            .div_fl.lbl {
+                width: 90px;
+                text-align: right;
+                font-size: 16px;
+            }
+
+            .inputbox .div_fl label {
+                margin: 5px;
+                font-size: 18px;
+            }
+
+            .inputbox .div_fl input {
+                border-style: ridge;
+                font-size: 16px;
+            }
+
+            .moveBtn {
+                background-color: #008CBA;
+                border: none;
+                color: white;
+                font-size: 16px;
+                width: 110px;
+                margin: 5px;
+                text-align: center;
+                vertical-align: center;
+            }
+
+            .picbox {
+                overflow: hidden;
+                float: left;
+                margin: 5px;
+            }
+
+            .picbox label {
+                display: inline-block;
+                padding: .5em .75em;
+                font-size: inherit;
+                line-height: normal;
+                vertical-align: middle;
+                cursor: pointer;
+                border: 1px solid #ebebeb;
+                border-bottom-color: #e2e2e2;
+                border-radius: .25em;
+                color: #fff;
+                background-color: #337ab7;
+                border-color: #2e6da4;
+            }
+
+            .picbox input[type="file"] {
+                /* 파일 필드 숨기기 */
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                border: 0;
+            }
+
+            #load {
+                color: rgba(0, 0, 0, 0.4);
+                text-align: center;
+                font-size: 13px;
+            }
+
+            @media (max-width: 600px) {
+
+                body,
+                #message {
+                    margin-top: 0;
+                    background: white;
+                    box-shadow: none;
+                }
+
+                body {
+                    border-top: 16px solid #ffa100;
+                }
+            }
+
+            @media (max-width: 360px) {
+                .moveBtn {
+                    width: 90px;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <form method="POST" action="{% url 'fittings:fitting' %}" enctype="multipart/form-data" id="MyForm">
+            {% csrf_token %}
+
+
+
+            <div id="page2" class="page2">
+
+                <div id="message">
+                    <h2>셀프 피팅</h2>
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>잘못입력되었습니다. 확인해주세요.</strong>
+                    </div>
+                    {% endif %}
+                    <div style="margin-top:20px;">
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>아동이름:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.kid_name}}</div>
+                                <div id="error_kid_name">{% if form.kid_name.errors %}
+                                    {% for error in form.kid_name.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+
+                        </div>
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>법정대리인 이름:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.parent_name}}</div>
+                                <div id="error_parent_name">{% if form.parent_name.errors %}
+                                    {% for error in form.parent_name.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>거주지:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.location}}</div>
+                                <div id="error_location">{% if form.location.errors %}
+                                    {% for error in form.location.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>생년월일:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.birthdate}}</div>
+                                <div id="error_birthdate">{% if form.birthdate.errors %}
+                                    {% for error in form.birthdate.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>연락처:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.phone_number}}</div>
+                                <div id="error_phone_number">{% if form.phone_number.errors %}
+                                    {% for error in form.phone_number.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>키:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.height}} cm</div>
+                                <div id="error_height">{% if form.height.errors %}
+                                    {% for error in form.height.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>몸무게:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.weight}} kg</div>
+                                <div id="error_weight">{% if form.weight.errors %}
+                                    {% for error in form.weight.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;" class="inputbox">
+                            <div class="div_fl">{{form.check1}}</div>
+                            <div class="div_fl">
+                                <div><a href="{% url 'fittings:certi1' %}">개인정보 수집ㆍ이용ㆍ제공 동의</a>
+                                </div>
+                                <div id="error_check1">{% if form.check1.errors %}
+                                    {% for error in form.check1.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;" class="inputbox">
+                            <div class="div_fl">{{form.check2}}</div>
+                            <div class="div_fl">
+                                <div><a href="{% url 'fittings:certi2' %}">개인정보 수집ㆍ이용ㆍ제공 동의(법정대리인용)</a>
+                                </div>
+                                <div id="error_check2">{% if form.check2.errors %}
+                                    {% for error in form.check2.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttonArea">
+                        <div class="buttonBox"><a class="goPage1 moveBtn" href="{% url 'fittings:init' %}">이전</a>
+                        </div>
+                        <div class="buttonBox"><a class="goPage3 moveBtn">다음</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page3" class="page3" style="display: none;">
+                <div id="message">
+                    <h2>셀프 피팅</h2>
+
+                    <div class="buttonArea buttonBox">
+                        <a class="videobutton"
+                            style="margin: 10px 50px ; padding: 7px; background-color: darkslategrey;"
+                            onclick="window.open('https://youtu.be/QlVKVWRXTew','_self');">피팅방법 동영상 보기</a>
+                    </div>
+                    <div style="margin-top:20px;">
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>좌폭:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.chair_width}} cm</div>
+                                <div id="error_chair_width">{% if form.chair_width.errors %}
+                                    {% for error in form.chair_width.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>등 높이:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.back_height}} cm</div>
+                                <div id="error_back_height">{% if form.back_height.errors %}
+                                    {% for error in form.back_height.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>다리 길이:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.leg_length}} cm</div>
+                                <div id="error_leg_length">{% if form.leg_length.errors %}
+                                    {% for error in form.leg_length.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="div_fl lbl"><label>좌석 깊이:</label></div>
+                            <div class="div_fl">
+                                <div>{{form.seat_depth}} cm</div>
+                                <div id="error_seat_depth">{% if form.seat_depth.errors %}
+                                    {% for error in form.seat_depth.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                        </div>
+
+                        <div style="margin:20px; height: 100px;">
+                            <div class="div_fl picbox">
+                                <label for="id_front_picture">정면사진</label>
+                                <div>{{form.front_picture}}</div>
+                                <div id="error_front_picture">{% if form.front_picture.errors %}
+                                    {% for error in form.front_picture.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                            <div class="div_fl">
+                                <img id="img_front" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
+                                    width="0" height="0" alt="" />
+                            </div>
+                        </div>
+
+                        <div style="margin:20px; height: 100px;">
+                            <div class="div_fl picbox">
+                                <label for="id_side_picture">측면사진</label>
+                                <div>{{form.side_picture}}</div>
+                                <div id="error_side_picture">{% if form.side_picture.errors %}
+                                    {% for error in form.side_picture.errors %}
+                                    <strong>{{ error|escape }}</strong>
+                                    {% endfor %}
+                                    {% endif %}</div>
+                            </div>
+                            <div class="div_fl">
+                                <img id="img_side" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D"
+                                    width="0" height="0" alt="" />
+                            </div>
+                        </div>
+
+
+
+                        <div class="buttonArea">
+                            <div class="buttonBox"><a class="goPage2 moveBtn">이전</a></div>
+                            <div class="buttonBox"><a class="moveBtn finish">신청하기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </form>
+
+        <div>
+            <br /><br />
+        </div>
+    </body>
+
+    <script type="text/javascript">
+
+
+        function front_upload_img(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img_front').attr('src', e.target.result);
+                    $('#img_front').attr('width', 100);
+                    $('#img_front').attr('height', 100);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function side_upload_img(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img_side').attr('src', e.target.result);
+                    $('#img_side').attr('width', 100);
+                    $('#img_side').attr('height', 100);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+
+    </script>
+
+</html>

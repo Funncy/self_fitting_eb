@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Welcome TodoWorks</title>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/common.js' %}"></script>
+
+        <style media="screen">
+            body {
+                background: #ECEFF1;
+                color: rgba(0, 0, 0, 0.87);
+                font-family: Roboto, Helvetica, Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            #message {
+                background: white;
+                max-width: 800px;
+                margin: 100px auto 16px;
+                padding: 32px 24px;
+                border-radius: 3px;
+            }
+
+            #message h2 {
+                color: #ffa100;
+                font-weight: bold;
+                font-size: 28px;
+                margin: 0 0 8px;
+            }
+
+            #message h1 {
+                font-size: 22px;
+                font-weight: 300;
+                color: rgba(0, 0, 0, 0.6);
+                margin: 0 0 16px;
+            }
+
+            #message p {
+                line-height: 140%;
+                margin: 16px 0 24px;
+                font-size: 16px;
+            }
+
+            #message a {
+                display: block;
+                text-align: center;
+                background: #039be5;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: white;
+                padding: 16px;
+                border-radius: 4px;
+            }
+
+            #message,
+            #message a {
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            }
+
+            .buttonArea {
+                overflow: hidden;
+                margin-top: 20px;
+            }
+
+            .buttonArea .buttonBox {
+                float: left;
+            }
+
+            .inputbox {
+                overflow: hidden;
+            }
+
+            .inputbox .div_fl {
+                float: left;
+                padding: 5px;
+            }
+
+            .div_fl.lbl {
+                width: 90px;
+                text-align: right;
+                font-size: 16px;
+            }
+
+            .inputbox .div_fl label {
+                margin: 5px;
+                font-size: 18px;
+            }
+
+            .inputbox .div_fl input {
+                border-style: ridge;
+                font-size: 16px;
+            }
+
+            .moveBtn {
+                background-color: #008CBA;
+                border: none;
+                color: white;
+                font-size: 16px;
+                width: 110px;
+                margin: 5px;
+                text-align: center;
+                vertical-align: center;
+            }
+
+            .picbox {
+                overflow: hidden;
+                height: 50px;
+                float: left;
+                margin: 5px;
+            }
+
+            .picbox label {
+                display: inline-block;
+                padding: .5em .75em;
+                font-size: inherit;
+                line-height: normal;
+                vertical-align: middle;
+                cursor: pointer;
+                border: 1px solid #ebebeb;
+                border-bottom-color: #e2e2e2;
+                border-radius: .25em;
+                color: #fff;
+                background-color: #337ab7;
+                border-color: #2e6da4;
+            }
+
+            .picbox input[type="file"] {
+                /* 파일 필드 숨기기 */
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                border: 0;
+            }
+
+            #load {
+                color: rgba(0, 0, 0, 0.4);
+                text-align: center;
+                font-size: 13px;
+            }
+
+            @media (max-width: 600px) {
+
+                body,
+                #message {
+                    margin-top: 0;
+                    background: white;
+                    box-shadow: none;
+                }
+
+                body {
+                    border-top: 16px solid #ffa100;
+                }
+            }
+
+            @media (max-width: 360px) {
+                .moveBtn {
+                    width: 90px;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <div id="message">
+                <h2>셀프 피팅</h2>
+
+                <div style="margin-top: 20px;">
+                    <label>신청이 완료되었습니다.</label>
+                </div>
+                <p></p>
+
+                <div style="align-items: center;">
+                    <img src="{% static 'image/m6_r.jpeg' %}" style="width: 45%;" />
+                    <img src="{% static 'image/m6_y.jpeg' %}" style="width: 45%;" />
+                </div>
+                <p></p>
+                <div class="buttonBox">
+                    <a class="videobutton opt_view" href="{% url 'fittings:opt_list' %}"
+                        style="margin: 10px 50px; padding: 7px; background-color: darkslategrey;">휠체어
+                        추가옵션 보기</a>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

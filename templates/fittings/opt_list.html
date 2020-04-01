@@ -1,0 +1,297 @@
+{% load static %}
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Welcome TodoWorks</title>
+
+        <style media="screen">
+            body {
+                background: #ECEFF1;
+                color: rgba(0, 0, 0, 0.87);
+                font-family: Roboto, Helvetica, Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            #message {
+                background: white;
+                max-width: 360px;
+                margin: 100px auto 16px;
+                padding: 32px 24px;
+                border-radius: 3px;
+            }
+
+            #message h2 {
+                color: #ffa100;
+                font-weight: bold;
+                font-size: 20px;
+                margin: 0 0 8px;
+            }
+
+            #message h1 {
+                font-size: 22px;
+                font-weight: 300;
+                color: rgba(0, 0, 0, 0.6);
+                margin: 0 0 16px;
+            }
+
+            #message h3 {
+                font-size: 16px;
+                font-weight: bold;
+                color: rgba(0, 0, 0, 0.6);
+                margin: 0 0 16px;
+            }
+
+            #message p {
+                line-height: 140%;
+                margin: 16px 0 24px;
+                font-size: 16px;
+            }
+
+            #message a {
+                display: block;
+                text-align: center;
+                background: #039be5;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: white;
+                padding: 16px;
+                border-radius: 4px;
+            }
+
+            #message,
+            #message a {
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+            }
+
+            #load {
+                color: rgba(0, 0, 0, 0.4);
+                text-align: center;
+                font-size: 13px;
+            }
+
+            @media (max-width: 600px) {
+
+                body,
+                #message {
+                    margin-top: 0;
+                    background: white;
+                    box-shadow: none;
+                }
+
+                body {
+                    border-top: 16px solid #ffa100;
+                }
+            }
+
+            #message img {
+                width: 100%;
+            }
+
+            .subtitle {
+                font-size: 20px;
+                font-weight: bold;
+                color: #ffa100;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="message">
+            <h2>Ottbock Start M6 Junior 옵션</h2>
+            <h3>(휠체어 옵션 선택시 비용이 발생할수 있습니다.)</h3>
+            <div>
+                <div>
+                    <div>
+                        <p class="subtitle">□ 발판</p>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="{% static 'image/1_1.png' %}">
+                            기본발판(측면)
+                        </div>
+                        <div>
+                            <img src="{% static 'image/1_2.png' %}">
+                            옵션발판(측면)
+                        </div>
+                    </div>
+                    <div>
+                        <p>
+                            <b>기본 발판보다 높이가 높은 옵션. (높이 조절 가능)</b><br>
+                            다리길이(오금~발뒤꿈치)가 30cm 이하인 경우 주로 사용.
+                            * 그러나 다리길이가 25cm 이하이면 발판 옵션을 선택해도 발바닥이 발판에 닿지 않기 때문에 옵션이 의미 없음.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p class="subtitle">□ 팔걸이</p>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="{% static 'image/2_1.png' %}">
+                            기본팔걸이
+                        </div>
+                        <div>
+                            <img src="{% static 'image/2_2.png' %}">
+                            옵션팔걸이(높이조절형)
+                        </div>
+                    </div>
+                    <div>
+                        <p>
+                            <b>기본 팔걸이보다 높이가 높은 옵션.</b><br>
+                            앉은 키가 많이 크거나 높은 방석을 사용하는 경우 사용하기도 함.
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <div>
+                        <p class="subtitle">□ 백폴딩</p>
+
+                    </div>
+                    <div>
+                        <div>
+                            <img src="{% static 'image/3_1.png' %}">
+                            백폴딩 옵션
+                        </div>
+                        <div>
+                            <img src="{% static 'image/3_2.png' %}">
+                            백폴딩 옵션(측면)
+                        </div>
+                    </div>
+                    <div>
+                        <p>
+                            <b>휠체어 등받이가 뒤로 접히는 옵션.</b><br>
+                            가스차나 소형차를 사용하는 경우 백폴딩 옵션을 많이 추가 함.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div>
+                        <p class="subtitle">□ 보호자용 높이 조절 손잡이</p>
+
+                    </div>
+                    <div>
+                        <div>
+                            <img src="{% static 'image/4_1.png' %}">
+                            기본 손잡이
+                        </div>
+                        <div>
+                            <img src="{% static 'image/4_2.png' %}">
+                            옵션 손잡이
+                        </div>
+                    </div>
+                    <div>
+                        <p>
+                            <b>보호자용 높이 조절 손잡이 옵션.</b><br>
+                            휠체어 사용자의 보호자(동행인)의 키가 큰 경우 많이 추가하는 옵션임.
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div>
+                    <div>
+                        <p class="subtitle">□ 보호자용 높이 조절 손잡이 (토도웍스) </p>
+
+                    </div>
+                    <div>
+                        <div>
+                            <img src="{% static 'image/5_1.png' %}">
+                            기본 손잡이
+                        </div>
+                        <div>
+                            <img src="{% static 'image/5_2.png' %}">
+                            옵션 손잡이
+                        </div>
+                    </div>
+                    <div>
+                        <p>
+                            <b>토도웍스에서 제작한 보호자용 높이 조절 손잡이 옵션. </b><br>
+                        </p>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div>
+                        <p class="subtitle">□ 백앵글</p>
+
+                    </div>
+                    <div>
+                        <div>
+                            <img src="{% static 'image/6_1.png' %}">
+                            기본 등받이
+                        </div>
+                        <div>
+                            <img src="{% static 'image/6_2.png' %}">
+                            백앵글 옵션 적용 (30º)
+                        </div>
+                    </div>
+                    <div>
+                        <p>
+                            <b>휠체어 등받이 각도를 최대 30º까지 적용할 수 있는 옵션. (10º, 20º, 30º 중 선택 가능)</b><br />
+                            등받이가 수직인 휠체어에 앉을 수 없는 경우 등받이 각도 옵션을 선택함.<br />
+                            * 백앵글 옵션 선택시 헤드레스트(머리 받침) 옵션도 함께 선택해야 함.
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <p class="subtitle">□ 머리 받침대 </p>
+
+                    </div>
+                    <div>
+                        <div>
+                            <img src="{% static 'image/7_1.png' %}">
+                            머리 받침대
+                        </div>
+                        <div>
+                            <img src="{% static 'image/7_2.png' %}">
+                            머리 받침대 (측면)
+                        </div>
+                    </div>
+                    <div>
+                        <p>
+                            <b>휠체어 사용자의 머리 받침대. </b><br />
+                            목과 머리를 가누기 어려운 경우 많이 사용하는 옵션. 백앵글 선택시 함께 선택하는 옵션.
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <p class="subtitle">□ 드럼 브레이크</p>
+
+                    </div>
+                    <div>
+                        <!-- <div>
+                    <img src="images/8_1.png">
+                    <p></p>
+                </div>
+                <div>
+                    <img src="images/8_2.png">
+                    <p></p>
+                </div> -->
+                    </div>
+                    <div>
+                        <p>
+                            <b>휠체어 사용자의 보호자(동행인)가 휠체어를 정지할 수 있도록 보호자용 손잡이에 장착되는 브레이크. </b><br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
