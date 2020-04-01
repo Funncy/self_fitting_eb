@@ -10,6 +10,7 @@ awsebcli = "*"
 django = "*"
 pipenv-to-requirements = "*"
 awsebcli = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.7"
