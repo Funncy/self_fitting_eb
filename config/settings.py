@@ -23,8 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+DEBUG = bool(os.environ.get("DEBUG"))
 ALLOWED_HOSTS = ["selffitting-eb.eba-spcdwqfw.ap-northeast-2.elasticbeanstalk.com",]
 
 
@@ -82,19 +81,42 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+if DEBUG is True:
+    DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("NAME"),
-        "USER": "todoworks",
-        "PASSWORD": os.environ.get("PASSWORD"),
-        "HOST": os.environ.get("HOST"),
-        "PORT": os.environ.get("PORT"),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
-    },
+        "NAME": "mysql",
+        "USER": "gywns41",
+        "PASSWORD": "todoworks",
+        "HOST": "localhost",
+        "PORT": "3306",
+    }
 }
+else:
+    DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
+    }
+}
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": os.environ.get("NAME"),
+#         "USER": "todoworks",
+#         "PASSWORD": os.environ.get("PASSWORD"),
+#         "HOST": os.environ.get("HOST"),
+#         "PORT": "3306",#os.environ.get("PORT"),
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+#     },
+# }
 
 
 # Password validation

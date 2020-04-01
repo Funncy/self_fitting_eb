@@ -1,7 +1,7 @@
 from django import forms
 from .models import Fitting
 
-YEARS = [x for x in range(1940, 2021)]
+YEARS = [x for x in reversed(range(1990, 2016))]
 
 
 class MySelectDateWidget(forms.SelectDateWidget):

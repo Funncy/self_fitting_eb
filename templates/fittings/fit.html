@@ -199,7 +199,7 @@
                     <h2>셀프 피팅</h2>
                     {% if form.errors %}
                     <div class="alert alert-danger">
-                        <strong>잘못입력되었습니다. 확인해주세요.</strong>
+                        <strong style='color: red'>입력내용을 확인해주세요.</strong>
                     </div>
                     {% endif %}
                     <div style="margin-top:20px;">
@@ -209,7 +209,7 @@
                                 <div>{{form.kid_name}}</div>
                                 <div id="error_kid_name">{% if form.kid_name.errors %}
                                     {% for error in form.kid_name.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -221,7 +221,7 @@
                                 <div>{{form.parent_name}}</div>
                                 <div id="error_parent_name">{% if form.parent_name.errors %}
                                     {% for error in form.parent_name.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -232,7 +232,7 @@
                                 <div>{{form.location}}</div>
                                 <div id="error_location">{% if form.location.errors %}
                                     {% for error in form.location.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -243,7 +243,7 @@
                                 <div>{{form.birthdate}}</div>
                                 <div id="error_birthdate">{% if form.birthdate.errors %}
                                     {% for error in form.birthdate.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -254,7 +254,7 @@
                                 <div>{{form.phone_number}}</div>
                                 <div id="error_phone_number">{% if form.phone_number.errors %}
                                     {% for error in form.phone_number.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -265,7 +265,7 @@
                                 <div>{{form.height}} cm</div>
                                 <div id="error_height">{% if form.height.errors %}
                                     {% for error in form.height.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -276,7 +276,7 @@
                                 <div>{{form.weight}} kg</div>
                                 <div id="error_weight">{% if form.weight.errors %}
                                     {% for error in form.weight.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -284,11 +284,11 @@
                         <div style="margin-top: 20px;" class="inputbox">
                             <div class="div_fl">{{form.check1}}</div>
                             <div class="div_fl">
-                                <div><a href="{% url 'fittings:certi1' %}">개인정보 수집ㆍ이용ㆍ제공 동의</a>
+                                <div><a style="font-size:0.8em;" href="{% url 'fittings:certi1' %}">개인정보 수집ㆍ이용ㆍ제공 동의</a>
                                 </div>
                                 <div id="error_check1">{% if form.check1.errors %}
                                     {% for error in form.check1.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -296,11 +296,12 @@
                         <div style="margin-top: 20px;" class="inputbox">
                             <div class="div_fl">{{form.check2}}</div>
                             <div class="div_fl">
-                                <div><a href="{% url 'fittings:certi2' %}">개인정보 수집ㆍ이용ㆍ제공 동의(법정대리인용)</a>
+                                <div><a style="font-size:0.8em;" href=" {% url 'fittings:certi2' %}">개인정보 수집ㆍ이용ㆍ제공
+                                        동의(법정대리인용)</a>
                                 </div>
                                 <div id="error_check2">{% if form.check2.errors %}
                                     {% for error in form.check2.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -330,7 +331,7 @@
                                 <div>{{form.chair_width}} cm</div>
                                 <div id="error_chair_width">{% if form.chair_width.errors %}
                                     {% for error in form.chair_width.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -341,7 +342,7 @@
                                 <div>{{form.back_height}} cm</div>
                                 <div id="error_back_height">{% if form.back_height.errors %}
                                     {% for error in form.back_height.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -352,7 +353,7 @@
                                 <div>{{form.leg_length}} cm</div>
                                 <div id="error_leg_length">{% if form.leg_length.errors %}
                                     {% for error in form.leg_length.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -363,7 +364,7 @@
                                 <div>{{form.seat_depth}} cm</div>
                                 <div id="error_seat_depth">{% if form.seat_depth.errors %}
                                     {% for error in form.seat_depth.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -375,7 +376,7 @@
                                 <div>{{form.front_picture}}</div>
                                 <div id="error_front_picture">{% if form.front_picture.errors %}
                                     {% for error in form.front_picture.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>
@@ -391,7 +392,7 @@
                                 <div>{{form.side_picture}}</div>
                                 <div id="error_side_picture">{% if form.side_picture.errors %}
                                     {% for error in form.side_picture.errors %}
-                                    <strong>{{ error|escape }}</strong>
+                                    <strong style='color: red'>{{ error|escape }}</strong>
                                     {% endfor %}
                                     {% endif %}</div>
                             </div>

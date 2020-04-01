@@ -25,6 +25,7 @@ chardet==3.0.4
 colorama==0.3.9
 cryptography==2.8
 distlib==0.3.0
+django-dotenv==1.4.2
 django==3.0.5
 docker-compose==1.25.4
 docker[ssh]==4.2.0
