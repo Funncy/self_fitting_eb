@@ -25,7 +25,7 @@ SECRET_KEY = 'x@h4oszm!1ifh=v7*953^%039wrm0*lfzf+f$on1$*d-x&g87u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["selffitting-eb.eba-spcdwqfw.ap-northeast-2.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["selffitting-eb.eba-spcdwqfw.ap-northeast-2.elasticbeanstalk.com",]
 
 
 # Application definition
