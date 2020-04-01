@@ -42,7 +42,7 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = ["storages",]
 
 PROJECT_APPS = [
     "fittings.apps.FittingsConfig",
