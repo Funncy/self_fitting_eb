@@ -174,7 +174,7 @@ if DEBUG is False:
     STATICFILES_STORAGE = 'config.custom_storages.StaticStorage'
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-    AWS_STORAGE_BUCKET_NAME = 'selffitting-eb-s3'
+    AWS_STORAGE_BUCKET_NAME = 'selffitting-eb-s3-2'
     AWS_DEFAULT_ACL = 'public-read'
     AWS_AUTO_CREATE_BUCKET = True
 
