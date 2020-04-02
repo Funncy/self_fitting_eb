@@ -35,7 +35,7 @@ class FittingForm(forms.ModelForm):
         ]
         widgets = {
             "kid_name": forms.TextInput(attrs={"placeholder": "예)홍길동"}),
-            "parent_name": forms.TextInput(attrs={"placeholder": "예)홍길동"}),
+            "parent_name": forms.TextInput(attrs={"placeholder": "예)보호자 이름"}),
             "location": forms.TextInput(attrs={"placeholder": "예)경기도 시흥시"}),
             "birthdate": MySelectDateWidget(years=YEARS, empty_label=("년도", "월", "일")),
             "phone_number": forms.TextInput(attrs={"placeholder": "예)010-1111-2222"}),
