@@ -159,7 +159,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 
-# STATIC_URL = "/static/"
+STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
 
@@ -169,14 +169,14 @@ MEDIA_URL = "/media/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+if DEBUG is False:
+    DEFAULT_FILE_STORAGE = 'config.custom_storages.UploadStorage'
+    STATICFILES_STORAGE = 'config.custom_storages.StaticStorage'
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = 'selffitting-eb-s3'
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_AUTO_CREATE_BUCKET = True
 
-DEFAULT_FILE_STORAGE = 'config.custom_storages.UploadStorage'
-STATICFILES_STORAGE = 'config.custom_storages.StaticStorage'
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = 'selffitting-eb-s3'
-AWS_DEFAULT_ACL = 'public-read'
-AWS_AUTO_CREATE_BUCKET = True
-
-AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
-STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"

@@ -166,12 +166,10 @@ $(function () {
         }
 
         document.getElementById("MyForm").submit();
+        LoadingWithMask();
 
     });
 
-    $(document).ready(function () {
-
-    });
 
 
 
