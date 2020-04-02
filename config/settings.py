@@ -28,7 +28,7 @@ if os.environ.get("DEBUG") == "False":
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ["selffitting-eb.eba-spcdwqfw.ap-northeast-2.elasticbeanstalk.com","localhost",]
+ALLOWED_HOSTS = ["selffitting.eba-gjai92ap.ap-northeast-2.elasticbeanstalk.com",]
 
 
 # Application definition
